@@ -85,6 +85,7 @@ export function startExplore(onEnter, opts = {}) {
   scene.add(plaza);
 
   // central fountain
+  let logoGroup;
   const fountain = new THREE.Group();
   const basin = new THREE.Mesh(new THREE.CylinderGeometry(2.4, 2.6, 0.7, 20), toonMat(0xcfd6e6));
   basin.position.y = 0.35;
@@ -92,7 +93,32 @@ export function startExplore(onEnter, opts = {}) {
   water.position.y = 0.62;
   const spout = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 1.4, 12), toonMat(0xcfd6e6));
   spout.position.y = 1.3;
-  fountain.add(basin, water, spout);
+
+  logoGroup = new THREE.Group();
+  logoGroup.position.y = 3.2;
+  const orangeMat = new THREE.MeshLambertMaterial({ color: 0xef9a13 });
+  const barGeo1 = new THREE.BoxGeometry(0.12, 0.45, 0.12);
+  const barGeo2 = new THREE.BoxGeometry(0.12, 0.9, 0.12);
+  const b1 = new THREE.Mesh(barGeo1, orangeMat); b1.position.set(-0.5, 0.15, 0); b1.rotation.z = -Math.PI / 6;
+  const b2 = new THREE.Mesh(barGeo1, orangeMat); b2.position.set(-0.5, -0.15, 0); b2.rotation.z = Math.PI / 6;
+  const b3 = new THREE.Mesh(barGeo2, orangeMat); b3.position.set(0, 0, 0); b3.rotation.z = -Math.PI / 6;
+  const b4 = new THREE.Mesh(barGeo1, orangeMat); b4.position.set(0.5, 0.15, 0); b4.rotation.z = Math.PI / 6;
+  const b5 = new THREE.Mesh(barGeo1, orangeMat); b5.position.set(0.5, -0.15, 0); b5.rotation.z = -Math.PI / 6;
+  logoGroup.add(b1, b2, b3, b4, b5);
+
+  const cvs = document.createElement('canvas'); cvs.width = 256; cvs.height = 64;
+  const ctx = cvs.getContext('2d');
+  ctx.font = '800 36px "Baloo 2", sans-serif'; ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.lineWidth = 6; ctx.strokeStyle = '#051426';
+  ctx.strokeText('Play Code', 128, 32); ctx.fillText('Play Code', 128, 32);
+  const tex = new THREE.CanvasTexture(cvs);
+  const planeMat = new THREE.MeshBasicMaterial({ map: tex, transparent: true });
+  const textPlane1 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), planeMat); textPlane1.position.y = -0.65;
+  const textPlane2 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), planeMat); textPlane2.position.y = -0.65; textPlane2.rotation.y = Math.PI;
+  logoGroup.add(textPlane1, textPlane2);
+  logoGroup.traverse((o) => { o.castShadow = true; });
+
+  fountain.add(basin, water, spout, logoGroup);
   fountain.traverse((o) => (o.castShadow = true));
   scene.add(fountain);
   colliders.push(aabb(0, 1, 0, 5.2, 2, 5.2));
@@ -468,6 +494,10 @@ export function startExplore(onEnter, opts = {}) {
     sun.position.set(player.pos.x + 18, 34, player.pos.z + 12);
     sun.target.position.set(player.pos.x, 0, player.pos.z);
     water.rotation.y += dt;
+    if (logoGroup) {
+      logoGroup.rotation.y += dt * 0.8;
+      logoGroup.position.y = 3.2 + Math.sin(elapsed * 2.5) * 0.15;
+    }
     for (const p of portals) { p.ring.rotation.z += dt * 1.5; p.ring.scale.setScalar(1 + Math.sin(elapsed * 3) * 0.06); p.sign.quaternion.copy(camera.cam.quaternion); }
     for (const c of clouds) { c.position.x += dt * 0.4; if (c.position.x > 34) c.position.x = -34; }
     for (const s of stars) { s.rotation.y += dt * 1.5; s.position.y = 4 + (s.userData.ph % 2) + Math.sin(elapsed * 1.5 + s.userData.ph) * 0.4; }
