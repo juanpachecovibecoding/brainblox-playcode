@@ -42,7 +42,7 @@ export function startArcade(onHome) {
   function awardXp(amount) {
     const res = progress.addXp(amount);
     hud.setLevel(res.info);
-    if (res.leveledUp) { hud.popLevel(); hud.showFlash(`Level ${res.level}! 🎉`, 1100); sfx.levelup(); }
+    if (res.leveledUp) { hud.popLevel(); hud.showFlash(`¡Nivel ${res.level}! 🎉`, 1100); sfx.levelup(); }
   }
 
   async function run() {
@@ -54,7 +54,7 @@ export function startArcade(onHome) {
       if (correct) {
         correctCount++; streak++; stars++; coins += 2;
         hud.addStar(); hud.setCoins(coins); sfx.correct(); awardXp(15);
-        if (streak % 3 === 0) { stars++; hud.addStar(); awardXp(15); hud.showFlash(`${streak} in a row! Bonus ⭐`, 1100); }
+        if (streak % 3 === 0) { stars++; hud.addStar(); awardXp(15); hud.showFlash(`¡${streak} seguidas! Bonus ⭐`, 1100); }
       } else { streak = 0; sfx.wrong(); }
       await sleep(350);
     }
@@ -64,9 +64,9 @@ export function startArcade(onHome) {
   function showResult(correctCount) {
     head.classList.add("hidden");
     document.getElementById("arcade-result-emoji").textContent = correctCount >= 8 ? "🏆" : correctCount >= 5 ? "🎉" : "👍";
-    document.getElementById("arcade-result-title").textContent = correctCount >= 8 ? "Amazing!" : correctCount >= 5 ? "Great job!" : "Good try!";
+    document.getElementById("arcade-result-title").textContent = correctCount >= 8 ? "¡Increíble!" : correctCount >= 5 ? "¡Muy bien!" : "¡Buen intento!";
     document.getElementById("arcade-result-sub").innerHTML =
-      `You got <b>${correctCount} / ${TOTAL}</b> right!<br>⭐ ${stars} stars · 🪙 ${coins} coins · Level ${progress.info().level}`;
+      `¡Contestaste bien <b>${correctCount} / ${TOTAL}</b>!<br>⭐ ${stars} estrellas · 🪙 ${coins} monedas · Nivel ${progress.info().level}`;
     result.classList.remove("hidden");
     sfx.win();
   }

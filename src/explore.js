@@ -25,13 +25,13 @@ const BASE = import.meta.env.BASE_URL;
 
 // each zone: a building standee + portal pad. `soon` marks not-yet-built modes.
 const ZONES = [
-  { key: "obby", name: "Obstacle Course", emoji: "🏃", img: "gym", color: 0xff8e72 },
+  { key: "obby", name: "Carrera de Obstáculos", emoji: "🏃", img: "gym", color: 0xff8e72 },
   { key: "arcade", name: "Quiz Arcade", emoji: "⚡", img: "arcade", color: 0xffd45e },
-  { key: "puzzles", name: "Jigsaw Puzzles", emoji: "🧩", img: "toystore", color: 0x5fd69a },
-  { key: "learn", name: "Learn", emoji: "📚", img: "school", color: 0x5fc6f0 },
-  { key: "coinrush", name: "Coin Rush", emoji: "🪙", img: "icecream", color: 0xffcf3a },
-  { key: "maze", name: "Maze", emoji: "🌀", img: "library", color: 0xbfa1ff },
-  { key: "closet", name: "My Closet", emoji: "👕", color: 0xff94bc },
+  { key: "puzzles", name: "Rompecabezas", emoji: "🧩", img: "toystore", color: 0x5fd69a },
+  { key: "learn", name: "Aprender", emoji: "📚", img: "school", color: 0x5fc6f0 },
+  { key: "coinrush", name: "Lluvia de Monedas", emoji: "🪙", img: "icecream", color: 0xffcf3a },
+  { key: "maze", name: "Laberinto", emoji: "🌀", img: "library", color: 0xbfa1ff },
+  { key: "closet", name: "Mi Ropero", emoji: "👕", color: 0xff94bc },
 ];
 
 export function startExplore(onEnter, opts = {}) {
@@ -315,7 +315,7 @@ export function startExplore(onEnter, opts = {}) {
     // a small Leave + mic bar
     const bar = document.getElementById("explore-bar");
     bar.classList.remove("hidden");
-    bar.innerHTML = `<button class="icon-btn ${voice && started ? "muted" : ""}" id="ex-mute">${started ? "🔇" : "🚫"}</button><button class="btn" id="ex-leave">🚪 Leave</button><span class="ex-tag">👋 Walk around with friends!</span>`;
+    bar.innerHTML = `<button class="icon-btn ${voice && started ? "muted" : ""}" id="ex-mute">${started ? "🔇" : "🚫"}</button><button class="btn" id="ex-leave">🚪 Salir</button><span class="ex-tag">👋 ¡Explora con tus amigos!</span>`;
     if (started) {
       bar.querySelector("#ex-mute").addEventListener("click", () => { const m = voice.toggleMute(); bar.querySelector("#ex-mute").textContent = m ? "🔇" : "🎤"; bar.querySelector("#ex-mute").classList.toggle("muted", m); bar.querySelector("#ex-mute").classList.toggle("live", !m); });
     }
@@ -327,7 +327,7 @@ export function startExplore(onEnter, opts = {}) {
   let activePortal = null;
   function showPrompt(p) {
     activePortal = p;
-    prompt.textContent = p.soon ? `${p.emoji} ${p.name} - Coming soon!` : `▶ Enter ${p.name}`;
+    prompt.textContent = p.soon ? `${p.emoji} ${p.name} - ¡Próximamente!` : `▶ Entrar a ${p.name}`;
     prompt.classList.toggle("soon", !!p.soon);
     prompt.classList.remove("hidden");
   }
@@ -413,15 +413,15 @@ export function startExplore(onEnter, opts = {}) {
 
   // static spots: benches (sit), pool (splash), fountain (wish), playground (dance)
   interactions.setSpots([
-    ...benchSpots.map((b, i) => ({ key: `bench${i}`, pos: b, range: 2.3, icon: "🪑", label: "Sit", act: () => emotes.play("sit") })),
-    { key: "pool", pos: { x: 16, z: 16 }, range: 5.6, icon: "🏊", label: "Splash", act: doSplash },
-    { key: "fountain", pos: { x: 0, z: 0 }, range: 3.6, icon: "🪙", label: "Make a Wish", act: doWish },
-    { key: "swing", pos: { x: -16, z: 16 }, range: 3.4, icon: "🛝", label: "Play", act: () => emotes.play("dance") },
+    ...benchSpots.map((b, i) => ({ key: `bench${i}`, pos: b, range: 2.3, icon: "🪑", label: "Sentarse", act: () => emotes.play("sit") })),
+    { key: "pool", pos: { x: 16, z: 16 }, range: 5.6, icon: "🏊", label: "Salpicar", act: doSplash },
+    { key: "fountain", pos: { x: 0, z: 0 }, range: 3.6, icon: "🪙", label: "Pedir un deseo", act: doWish },
+    { key: "swing", pos: { x: -16, z: 16 }, range: 3.4, icon: "🛝", label: "Jugar", act: () => emotes.play("dance") },
   ]);
   // dynamic spots: wandering NPCs (pet) + nearby friends (high-five)
   interactions.setDynamic(() => {
-    const out = npcs.map((n, i) => ({ key: `npc${i}`, pos: { x: n.spr.position.x, z: n.spr.position.z }, range: 2.4, icon: "🐾", label: "Pet", npc: n, act: petNpc }));
-    if (remote) for (const p of remote.list()) out.push({ key: `hi-${p.id}`, pos: { x: p.pos.x, z: p.pos.z }, range: 3.0, icon: "🙌", label: "High-five", id: p.id, act: highfive });
+    const out = npcs.map((n, i) => ({ key: `npc${i}`, pos: { x: n.spr.position.x, z: n.spr.position.z }, range: 2.4, icon: "🐾", label: "Acariciar", npc: n, act: petNpc }));
+    if (remote) for (const p of remote.list()) out.push({ key: `hi-${p.id}`, pos: { x: p.pos.x, z: p.pos.z }, range: 3.0, icon: "🙌", label: "Chocar los cinco", id: p.id, act: highfive });
     return out;
   });
 

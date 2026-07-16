@@ -10,11 +10,12 @@ import { createProgress } from "./progress.js";
 
 const N = 6; // cells per side
 const S = 4; // cell size
+const O = ((N - 1) * S) / 2; // offset to center the maze
 
-export function startMaze() {
+export function startMaze(goHome, restart) {
   const progress = createProgress();
   // start in the first cell; near-overhead camera so corners are easy to read
-  const spawn = { x: 0, y: 1.5, z: 0 };
+  const spawn = { x: -O, y: 1.5, z: -O };
   const rig = createScene3d(spawn, { camDist: 4, camHeight: 13 });
   rig.addGroundPlane((N + 1) * S, (N + 1) * S, 0x9fe6b0);
 
@@ -43,7 +44,7 @@ export function startMaze() {
 
   // ---- build walls (hedge boxes) ----
   const hedge = toonMat(0x46a85a, { flatShading: true });
-  const H = 2.2, T = 0.6;
+  const H = 4.5, T = 0.6;
   function wall(cx, cz, sx, sz) {
     const m = new THREE.Mesh(new THREE.BoxGeometry(sx, H, sz), hedge);
     m.position.set(cx, H / 2, cz);
@@ -51,7 +52,7 @@ export function startMaze() {
     rig.scene.add(m);
     rig.colliders.push(rig.aabb(cx, H / 2, cz, sx, H, sz));
   }
-  const cx = (c) => c * S, cz = (r) => r * S;
+  const cx = (c) => c * S - O, cz = (r) => r * S - O;
   for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
     if (east[r][c]) wall(cx(c) + S / 2, cz(r), T, S + T);
     if (south[r][c]) wall(cx(c), cz(r) + S / 2, S + T, T);
@@ -62,8 +63,7 @@ export function startMaze() {
   wall(cx((N - 1) / 2), cz(0) - S / 2, N * S + T, T); // north
   wall(cx((N - 1) / 2), cz(N - 1) + S / 2, N * S + T, T); // south
 
-  // shift everything so the start cell sits at the origin (player spawn)
-  // (player already at 0,0 which is cell (0,0) center -> good)
+
 
   // ---- goal star at the far corner ----
   const goalPos = new THREE.Vector3(cx(N - 1), 1.4, cz(N - 1));
@@ -77,7 +77,7 @@ export function startMaze() {
 
   const hud = document.getElementById("mode-hud");
   hud.classList.remove("hidden");
-  hud.innerHTML = `<span class="mh-pill">🌀 Find the ⭐</span>`;
+  hud.innerHTML = `<span class="mh-pill">🌀 Encuentra la ⭐</span>`;
 
   let won = false, t = 0;
   rig.run((dt) => {
@@ -96,12 +96,15 @@ export function startMaze() {
     const res = document.getElementById("mode-result");
     res.innerHTML = `<div class="result-card">
       <div class="win-emoji">🏆</div>
-      <h2>You found it!</h2>
-      <p class="win-stars">You solved the maze!<br>Level ${progress.info().level}</p>
-      <button class="btn btn-big btn-accent" id="mz-again">New Maze</button>
+      <h2>¡Lo encontraste!</h2>
+      <p class="win-stars">¡Resolviste el laberinto!<br>Nivel ${progress.info().level}</p>
+      <button class="btn btn-big btn-accent" id="mz-again">Nuevo laberinto</button>
     </div>`;
     res.classList.remove("hidden");
-    res.querySelector("#mz-again").addEventListener("click", () => location.reload());
+    res.querySelector("#mz-again").addEventListener("click", () => {
+      if (restart) restart();
+      else location.reload();
+    });
   }
 
   function destroy() {

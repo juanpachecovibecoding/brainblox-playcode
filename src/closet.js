@@ -7,13 +7,13 @@ import { sfx } from "./audio.js";
 
 const COLORS = [0x5cc6f0, 0xff8e72, 0x5fd69a, 0xffd45e, 0xbfa1ff, 0xff94bc, 0xff5d5d, 0x52e0c4, 0x6b7a99, 0xffffff];
 const HATS = [
-  { key: "none", emoji: "🚫", name: "None", price: 0 },
-  { key: "cap", emoji: "🧢", name: "Cap", price: 0 },
-  { key: "party", emoji: "🎉", name: "Party", price: 30 },
-  { key: "beanie", emoji: "🧶", name: "Beanie", price: 40 },
-  { key: "propeller", emoji: "🚁", name: "Propeller", price: 60 },
-  { key: "crown", emoji: "👑", name: "Crown", price: 80 },
-  { key: "wizard", emoji: "🧙", name: "Wizard", price: 100 },
+  { key: "none", emoji: "🚫", name: "Ninguno", price: 0 },
+  { key: "cap", emoji: "🧢", name: "Gorra", price: 0 },
+  { key: "party", emoji: "🎉", name: "Fiesta", price: 30 },
+  { key: "beanie", emoji: "🧶", name: "Gorro", price: 40 },
+  { key: "propeller", emoji: "🚁", name: "Hélice", price: 60 },
+  { key: "crown", emoji: "👑", name: "Corona", price: 80 },
+  { key: "wizard", emoji: "🧙", name: "Mago", price: 100 },
 ];
 const HAT_PREVIEW = { none: "", cap: "🧢", party: "🎉", beanie: "🧶", propeller: "🚁", crown: "👑", wizard: "🧙" };
 
@@ -41,19 +41,19 @@ export function startCloset(onHome) {
         <div class="closet-colors">
           ${COLORS.map((c) => `<button class="cc-swatch ${c === color ? "sel" : ""}" data-c="${c}" style="background:#${c.toString(16).padStart(6, "0")}"></button>`).join("")}
         </div>
-        <div class="closet-section">Hats</div>
+        <div class="closet-section">Sombreros</div>
         <div class="closet-hats">
           ${HATS.map((h) => {
             const owned = profile.owns(h.key);
             const sel = h.key === hat;
             return `<button class="ch-tile ${sel ? "sel" : ""} ${owned ? "" : "locked"}" data-h="${h.key}" data-p="${h.price}">
               <span class="ch-emoji">${h.emoji}</span><span class="ch-name">${h.name}</span>
-              <span class="ch-tag">${owned ? (sel ? "Wearing" : "Wear") : "🪙 " + h.price}</span>
+              <span class="ch-tag">${owned ? (sel ? "Puesto" : "Poner") : "🪙 " + h.price}</span>
             </button>`;
           }).join("")}
         </div>
         <div class="closet-msg" id="closet-msg"></div>
-        <button class="btn btn-big btn-accent" id="closet-done">Done</button>
+        <button class="btn btn-big btn-accent" id="closet-done">Listo</button>
       </div>`;
 
     root.querySelectorAll(".cc-swatch").forEach((b) => b.addEventListener("click", () => { profile.setColor(Number(b.dataset.c)); sfx.coin(); render(); }));
@@ -64,7 +64,7 @@ export function startCloset(onHome) {
   function pickHat(key, price) {
     if (profile.owns(key)) { profile.setHat(key); sfx.coin(); render(); return; }
     if (profile.buy(key, price)) { profile.setHat(key); sfx.levelup(); render(); }
-    else { sfx.wrong(); const m = document.getElementById("closet-msg"); if (m) { m.textContent = "Not enough coins - play games to earn more!"; setTimeout(() => { if (document.getElementById("closet-msg")) document.getElementById("closet-msg").textContent = ""; }, 1800); } }
+    else { sfx.wrong(); const m = document.getElementById("closet-msg"); if (m) { m.textContent = "¡No tienes suficientes monedas - juega para ganar más!"; setTimeout(() => { if (document.getElementById("closet-msg")) document.getElementById("closet-msg").textContent = ""; }, 1800); } }
   }
 
   function destroy() {

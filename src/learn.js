@@ -9,10 +9,10 @@ import { createProgress } from "./progress.js";
 import { sfx, unlockAudio } from "./audio.js";
 
 const SUBJECTS = [
-  { key: "letters", emoji: "🔤", name: "Letters", desc: "ABC & sounds" },
-  { key: "numbers", emoji: "🔢", name: "Numbers", desc: "Count & order" },
-  { key: "shapes", emoji: "🔷", name: "Shapes", desc: "Circle, star…" },
-  { key: "colors", emoji: "🎨", name: "Colors", desc: "Red, blue…" },
+  { key: "letters", emoji: "🔤", name: "Letras", desc: "ABC y sonidos" },
+  { key: "numbers", emoji: "🔢", name: "Números", desc: "Contar y ordenar" },
+  { key: "shapes", emoji: "🔷", name: "Figuras", desc: "Círculo, estrella…" },
+  { key: "colors", emoji: "🎨", name: "Colores", desc: "Rojo, azul…" },
 ];
 const ROUND = 8;
 
@@ -32,11 +32,11 @@ export function startLearn(onHome) {
     document.getElementById("hud")?.classList.add("hidden");
     root.innerHTML = `
       <div class="learn-wrap">
-        <h1 class="learn-title">📚 What shall we learn?</h1>
+        <h1 class="learn-title">📚 ¿Qué vamos a aprender?</h1>
         <div class="learn-grid">
           ${SUBJECTS.map((s) => `<button class="learn-card" data-key="${s.key}"><span class="lc-emoji">${s.emoji}</span><span class="lc-name">${s.name}</span><span class="lc-desc">${s.desc}</span></button>`).join("")}
         </div>
-        <div class="learn-foot">Level <b>${progress.info().level}</b></div>
+        <div class="learn-foot">Nivel <b>${progress.info().level}</b></div>
       </div>`;
     root.querySelectorAll(".learn-card").forEach((b) => b.addEventListener("click", () => runSubject(b.dataset.key)));
   }
@@ -62,8 +62,8 @@ export function startLearn(onHome) {
         sfx.correct();
         const r = progress.addXp(12);
         hud.setLevel(r.info);
-        if (r.leveledUp) { hud.popLevel(); hud.showFlash(`Level ${r.level}! 🎉`, 1000); sfx.levelup(); }
-        if (streak % 3 === 0) { hud.addStar(); hud.showFlash(`${streak} in a row! ⭐`, 900); }
+        if (r.leveledUp) { hud.popLevel(); hud.showFlash(`¡Nivel ${r.level}! 🎉`, 1000); sfx.levelup(); }
+        if (streak % 3 === 0) { hud.addStar(); hud.showFlash(`¡${streak} seguidas! ⭐`, 900); }
       } else {
         streak = 0;
         sfx.wrong();
@@ -81,10 +81,10 @@ export function startLearn(onHome) {
         <div class="result-card">
           <div class="win-emoji">${correct >= 7 ? "🏆" : correct >= 4 ? "🎉" : "👍"}</div>
           <h2>${s.emoji} ${s.name}</h2>
-          <p class="win-stars">You got <b>${correct} / ${ROUND}</b> right!<br>Level ${progress.info().level}</p>
+          <p class="win-stars">¡Contestaste bien <b>${correct} / ${ROUND}</b>!<br>Nivel ${progress.info().level}</p>
           <div class="lobby-buttons">
-            <button class="btn btn-big btn-accent" id="learn-again">Keep Learning</button>
-            <button class="btn btn-big" id="learn-menu">Other Subjects</button>
+            <button class="btn btn-big btn-accent" id="learn-again">Seguir aprendiendo</button>
+            <button class="btn btn-big" id="learn-menu">Otros temas</button>
           </div>
         </div>
       </div>`;

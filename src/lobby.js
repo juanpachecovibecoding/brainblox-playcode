@@ -32,11 +32,11 @@ export function showLobby() {
     const preCode = (url.searchParams.get("room") || "").toUpperCase();
     if (preCode) codeInput.value = preCode;
 
-    if (!MULTIPLAYER_AVAILABLE) msg.textContent = "Playing alone is ready. Rooms need a quick grown-up setup.";
+    if (!MULTIPLAYER_AVAILABLE) msg.textContent = "Puedes jugar solo. Las salas necesitan una configuración rápida.";
 
     function name() {
       const n = nameInput.value.trim().slice(0, 12);
-      const final = n || "Player";
+      const final = n || "Jugador";
       localStorage.setItem("bb_name", final);
       return final;
     }
@@ -48,14 +48,14 @@ export function showLobby() {
     btnSolo.addEventListener("click", () => done({ mode: "solo", name: name() }));
 
     btnCreate.addEventListener("click", () => {
-      if (!MULTIPLAYER_AVAILABLE) { msg.textContent = "Rooms are not set up yet - try Play!"; return; }
+      if (!MULTIPLAYER_AVAILABLE) { msg.textContent = "Las salas aún no están listas - ¡intenta Jugar!"; return; }
       done({ mode: "multi", name: name(), code: randomCode() });
     });
 
     btnJoin.addEventListener("click", () => {
       const code = codeInput.value.trim().toUpperCase();
-      if (!code) { msg.textContent = "Type a room code first!"; return; }
-      if (!MULTIPLAYER_AVAILABLE) { msg.textContent = "Rooms are not set up yet - try Play!"; return; }
+      if (!code) { msg.textContent = "¡Escribe un código de sala!"; return; }
+      if (!MULTIPLAYER_AVAILABLE) { msg.textContent = "Las salas aún no están listas - ¡intenta Jugar!"; return; }
       done({ mode: "multi", name: name(), code });
     });
   });

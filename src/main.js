@@ -92,7 +92,7 @@ const LAUNCHERS = {
   puzzles: (goHome) => startPuzzles(goHome),
   learn: (goHome) => startLearn(goHome),
   coinrush: () => startCoinRush(),
-  maze: () => startMaze(),
+  maze: (goHome, restart) => startMaze(goHome, restart),
   closet: (goHome) => startCloset(goHome),
 };
 
@@ -109,7 +109,8 @@ function openActivity(launcher) {
   if (current?.destroy) current.destroy();
   document.getElementById("hub").classList.add("hidden");
   document.getElementById("btn-home").classList.remove("hidden");
-  current = launcher(goHome);
+  const restart = () => openActivity(launcher);
+  current = launcher(goHome, restart);
 }
 
 function goHome() {
@@ -215,7 +216,7 @@ function startGame(choice, onHome) {
   if (choice.mode === "multi" && MULTIPLAYER_AVAILABLE) {
     setupMultiplayer(choice).catch((e) => {
       console.error(e);
-      hud.showFlash("Could not join room", 1500);
+      hud.showFlash("No se pudo unir a la sala", 1500);
     });
   }
 
@@ -234,7 +235,7 @@ function startGame(choice, onHome) {
 
     const ok = await net.join(choice.code, me);
     if (!ok) {
-      hud.showFlash("Rooms not set up", 1500);
+      hud.showFlash("Salas no configuradas", 1500);
       return;
     }
     hud.showRoom(choice.code);
@@ -260,11 +261,11 @@ function startGame(choice, onHome) {
         muteBtn.classList.toggle("muted", muted);
         muteBtn.classList.toggle("live", !muted);
         muteBtn.textContent = muted ? "🔇" : "🎤";
-        hud.showFlash(muted ? "Mic off" : "Mic on - say hi!", 900);
+        hud.showFlash(muted ? "Mic apagado" : "Mic encendido - ¡saluda!", 900);
       });
     } else {
       muteBtn.textContent = "🚫";
-      muteBtn.title = "Microphone blocked";
+      muteBtn.title = "Micrófono bloqueado";
     }
     refreshPlayers();
   }
@@ -275,7 +276,7 @@ function startGame(choice, onHome) {
       const link = `${location.origin}${location.pathname}?room=${code}`;
       try {
         await navigator.clipboard.writeText(link);
-        hud.showFlash("Link copied!", 900);
+        hud.showFlash("¡Enlace copiado!", 900);
       } catch {
         hud.showFlash(link, 1800);
       }
@@ -302,7 +303,7 @@ function startGame(choice, onHome) {
     hud.setLevel(res.info);
     if (res.leveledUp) {
       hud.popLevel();
-      hud.showFlash(`Level ${res.level}! 🎉`, 1100);
+      hud.showFlash(`¡Nivel ${res.level}! 🎉`, 1100);
       sfx.levelup();
       props.spawnConfetti({ x: player.pos.x, y: player.pos.y + 3, z: player.pos.z });
     }
@@ -361,14 +362,14 @@ function startGame(choice, onHome) {
       if (streak > 0 && streak % 3 === 0) {
         hud.addStar();
         awardXp(15);
-        hud.showFlash(`${streak} in a row! Bonus ⭐`, 1200);
+        hud.showFlash(`¡${streak} seguidas! Bonus ⭐`, 1200);
       } else {
-        hud.showFlash("Gate open! 🎉", 900);
+        hud.showFlash("¡Puerta abierta! 🎉", 900);
       }
     } else {
       sfx.wrong();
       streak = 0;
-      hud.showFlash("Try again!", 1000);
+      hud.showFlash("¡Inténtalo de nuevo!", 1000);
       respawn(player, cp.pos); // back onto the safe pad, gate still locked
     }
     state = state === "win" ? "win" : "play";
@@ -434,7 +435,7 @@ function startGame(choice, onHome) {
       if (inRaw.jump && wasGrounded) sfx.jump();
       if (fell) {
         respawn(player, respawnPoint);
-        hud.showFlash("Whoops!", 700);
+        hud.showFlash("¡Ups!", 700);
       }
 
       // collect coins along the way

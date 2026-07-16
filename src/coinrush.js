@@ -69,9 +69,9 @@ export function startCoinRush() {
     const res = document.getElementById("mode-result");
     res.innerHTML = `<div class="result-card">
       <div class="win-emoji">${collected >= 18 ? "🏆" : collected >= 8 ? "🎉" : "🪙"}</div>
-      <h2>Time's up!</h2>
-      <p class="win-stars">You grabbed <b>${collected}</b> coins!<br>Level ${progress.info().level}</p>
-      <button class="btn btn-big btn-accent" id="cr-again">Play Again</button>
+      <h2>¡Se acabó el tiempo!</h2>
+      <p class="win-stars">Agarraste <b>${collected}</b> monedas!<br>Nivel ${progress.info().level}</p>
+      <button class="btn btn-big btn-accent" id="cr-again">Jugar de nuevo</button>
     </div>`;
     res.classList.remove("hidden");
     res.querySelector("#cr-again").addEventListener("click", () => location.reload());

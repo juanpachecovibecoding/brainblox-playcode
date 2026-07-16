@@ -1,5 +1,5 @@
 // ============================================================
-//  BrainBlox question content
+//  BrainBlox question content - Spanish Version
 //  ----------------------------------------------------------
 //  Questions come in a few flavors, all multiple-choice (tap to answer):
 //    - Math       : auto-generated (+, -, x), scaled by difficulty
@@ -19,86 +19,92 @@
 
 // emoji + the word for it + a category, used to build picture questions.
 export const PICTURES = [
-  // animals
-  { e: "🐶", name: "Dog", cat: "animal" },
-  { e: "🐱", name: "Cat", cat: "animal" },
-  { e: "🦁", name: "Lion", cat: "animal" },
-  { e: "🐘", name: "Elephant", cat: "animal" },
-  { e: "🐸", name: "Frog", cat: "animal" },
-  { e: "🐝", name: "Bee", cat: "animal" },
-  { e: "🐢", name: "Turtle", cat: "animal" },
-  { e: "🐠", name: "Fish", cat: "animal" },
-  { e: "🦆", name: "Duck", cat: "animal" },
-  { e: "🦋", name: "Butterfly", cat: "animal" },
-  { e: "🐧", name: "Penguin", cat: "animal" },
-  { e: "🐴", name: "Horse", cat: "animal" },
-  // food
-  { e: "🍎", name: "Apple", cat: "food" },
-  { e: "🍌", name: "Banana", cat: "food" },
-  { e: "🍓", name: "Strawberry", cat: "food" },
+  // animales
+  { e: "🐶", name: "Perro", cat: "animal" },
+  { e: "🐱", name: "Gato", cat: "animal" },
+  { e: "🦁", name: "León", cat: "animal" },
+  { e: "🐘", name: "Elefante", cat: "animal" },
+  { e: "🐸", name: "Rana", cat: "animal" },
+  { e: "🐝", name: "Abeja", cat: "animal" },
+  { e: "🐢", name: "Tortuga", cat: "animal" },
+  { e: "🐠", name: "Pez", cat: "animal" },
+  { e: "🦆", name: "Pato", cat: "animal" },
+  { e: "🦋", name: "Mariposa", cat: "animal" },
+  { e: "🐧", name: "Pingüino", cat: "animal" },
+  { e: "🐴", name: "Caballo", cat: "animal" },
+  // comida
+  { e: "🍎", name: "Manzana", cat: "food" },
+  { e: "🍌", name: "Plátano", cat: "food" },
+  { e: "🍓", name: "Fresa", cat: "food" },
   { e: "🍕", name: "Pizza", cat: "food" },
-  { e: "🍦", name: "Ice cream", cat: "food" },
-  { e: "🥕", name: "Carrot", cat: "food" },
-  { e: "🍪", name: "Cookie", cat: "food" },
-  { e: "🍉", name: "Watermelon", cat: "food" },
-  { e: "🌽", name: "Corn", cat: "food" },
-  { e: "🍇", name: "Grapes", cat: "food" },
-  // vehicles
-  { e: "🚗", name: "Car", cat: "vehicle" },
-  { e: "🚌", name: "Bus", cat: "vehicle" },
-  { e: "✈️", name: "Airplane", cat: "vehicle" },
-  { e: "🚀", name: "Rocket", cat: "vehicle" },
-  { e: "🚲", name: "Bike", cat: "vehicle" },
-  { e: "🚂", name: "Train", cat: "vehicle" },
-  { e: "⛵", name: "Boat", cat: "vehicle" },
-  { e: "🚒", name: "Fire truck", cat: "vehicle" },
-  // nature
-  { e: "🌳", name: "Tree", cat: "nature" },
-  { e: "🌸", name: "Flower", cat: "nature" },
-  { e: "☀️", name: "Sun", cat: "nature" },
-  { e: "🌙", name: "Moon", cat: "nature" },
-  { e: "⭐", name: "Star", cat: "nature" },
-  { e: "🌈", name: "Rainbow", cat: "nature" },
-  { e: "❄️", name: "Snowflake", cat: "nature" },
-  { e: "🍄", name: "Mushroom", cat: "nature" },
-  // things
-  { e: "⚽", name: "Soccer ball", cat: "thing" },
-  { e: "🎈", name: "Balloon", cat: "thing" },
-  { e: "🎁", name: "Present", cat: "thing" },
-  { e: "🪁", name: "Kite", cat: "thing" },
-  { e: "🧸", name: "Teddy bear", cat: "thing" },
-  { e: "🎸", name: "Guitar", cat: "thing" },
-  { e: "🔑", name: "Key", cat: "thing" },
-  { e: "⏰", name: "Clock", cat: "thing" },
+  { e: "🍦", name: "Helado", cat: "food" },
+  { e: "🥕", name: "Zanahoria", cat: "food" },
+  { e: "🍪", name: "Galleta", cat: "food" },
+  { e: "🍉", name: "Sandía", cat: "food" },
+  { e: "🌽", name: "Maíz", cat: "food" },
+  { e: "🍇", name: "Uvas", cat: "food" },
+  // vehículos
+  { e: "🚗", name: "Auto", cat: "vehicle" },
+  { e: "🚌", name: "Autobús", cat: "vehicle" },
+  { e: "✈️", name: "Avión", cat: "vehicle" },
+  { e: "🚀", name: "Cohete", cat: "vehicle" },
+  { e: "🚲", name: "Bicicleta", cat: "vehicle" },
+  { e: "🚂", name: "Tren", cat: "vehicle" },
+  { e: "⛵", name: "Barco", cat: "vehicle" },
+  { e: "🚒", name: "Camión de bomberos", cat: "vehicle" },
+  // naturaleza
+  { e: "🌳", name: "Árbol", cat: "nature" },
+  { e: "🌸", name: "Flor", cat: "nature" },
+  { e: "☀️", name: "Sol", cat: "nature" },
+  { e: "🌙", name: "Luna", cat: "nature" },
+  { e: "⭐", name: "Estrella", cat: "nature" },
+  { e: "🌈", name: "Arcoíris", cat: "nature" },
+  { e: "❄️", name: "Copo de nieve", cat: "nature" },
+  { e: "🍄", name: "Hongo", cat: "nature" },
+  // cosas
+  { e: "⚽", name: "Pelota de fútbol", cat: "thing" },
+  { e: "🎈", name: "Globo", cat: "thing" },
+  { e: "🎁", name: "Regalo", cat: "thing" },
+  { e: "🪁", name: "Cometa", cat: "thing" },
+  { e: "🧸", name: "Oso de peluche", cat: "thing" },
+  { e: "🎸", name: "Guitarra", cat: "thing" },
+  { e: "🔑", name: "Llave", cat: "thing" },
+  { e: "⏰", name: "Reloj", cat: "thing" },
 ];
 
-const CATEGORY_LABEL = { animal: "animal", food: "food you can eat", vehicle: "thing that goes", nature: "thing in nature", thing: "toy or object" };
+const CATEGORY_LABEL = {
+  animal: "animal",
+  food: "alimento que se come",
+  vehicle: "medio de transporte",
+  nature: "elemento de la naturaleza",
+  thing: "objeto o juguete"
+};
 
 export const BANK = [
-  // ---- Reading / Spelling ----
-  { topic: "Reading", prompt: "Which word means a baby dog?", choices: ["Puppy", "Kitten", "Calf", "Chick"], correctIndex: 0, minLevel: 0 },
-  { topic: "Reading", prompt: "Which word is spelled correctly?", choices: ["Frend", "Friend", "Freind", "Frynd"], correctIndex: 1, minLevel: 0 },
-  { topic: "Reading", prompt: "What is the opposite of 'hot'?", choices: ["Warm", "Cold", "Fast", "Big"], correctIndex: 1, minLevel: 0 },
-  { topic: "Reading", prompt: "Which word rhymes with 'cat'?", choices: ["Dog", "Hat", "Cup", "Sun"], correctIndex: 1, minLevel: 0 },
-  { topic: "Reading", prompt: "What is the opposite of 'happy'?", choices: ["Sad", "Glad", "Funny", "Tall"], correctIndex: 0, minLevel: 0 },
-  { topic: "Reading", prompt: "Which word means 'very big'?", choices: ["Tiny", "Huge", "Soft", "Slow"], correctIndex: 1, minLevel: 0 },
-  { topic: "Reading", prompt: "Which word is spelled correctly?", choices: ["Becuase", "Because", "Becuse", "Becouse"], correctIndex: 1, minLevel: 1 },
-  { topic: "Reading", prompt: "Which word is plural (more than one)?", choices: ["Cat", "Dogs", "House", "Tree"], correctIndex: 1, minLevel: 1 },
+  // ---- Lectura / Ortografía ----
+  { topic: "Lectura", prompt: "¿Qué palabra significa un perro bebé?", choices: ["Cachorro", "Gatito", "Ternero", "Pollito"], correctIndex: 0, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué palabra está escrita correctamente?", choices: ["Amigo", "Hamigo", "Amiggo", "Amygo"], correctIndex: 0, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué es lo opuesto de 'caliente'?", choices: ["Tibio", "Frío", "Rápido", "Grande"], correctIndex: 1, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué palabra rima con 'gato'?", choices: ["Perro", "Pato", "Taza", "Sol"], correctIndex: 1, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué es lo opuesto de 'feliz'?", choices: ["Triste", "Alegre", "Divertido", "Alto"], correctIndex: 0, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué palabra significa 'muy grande'?", choices: ["Diminuto", "Enorme", "Suave", "Lento"], correctIndex: 1, minLevel: 0 },
+  { topic: "Lectura", prompt: "¿Qué palabra está escrita correctamente?", choices: ["Porque", "Porke", "Por que", "Porqué"], correctIndex: 0, minLevel: 1 },
+  { topic: "Lectura", prompt: "¿Qué palabra está en plural (más de uno)?", choices: ["Gato", "Perros", "Casa", "Árbol"], correctIndex: 1, minLevel: 1 },
 
-  // ---- Science / Animals / Body ----
-  { topic: "Science", prompt: "What do plants need to grow?", choices: ["Candy", "Sunlight", "Toys", "Rocks"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "How many legs does a spider have?", choices: ["6", "8", "4", "10"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "What do bees make?", choices: ["Milk", "Honey", "Bread", "Silk"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "A caterpillar turns into a...", choices: ["Spider", "Butterfly", "Bird", "Fish"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "How many days are in one week?", choices: ["5", "7", "10", "12"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "What do we breathe to stay alive?", choices: ["Water", "Air", "Sand", "Juice"], correctIndex: 1, minLevel: 0 },
-  { topic: "Science", prompt: "Which season is the coldest?", choices: ["Summer", "Winter", "Spring", "Fall"], correctIndex: 1, minLevel: 0 },
+  // ---- Ciencias ----
+  { topic: "Ciencias", prompt: "¿Qué necesitan las plantas para crecer?", choices: ["Dulces", "Luz solar", "Juguetes", "Piedras"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "¿Cuántas patas tiene una araña?", choices: ["6", "8", "4", "10"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "¿Qué hacen las abejas?", choices: ["Leche", "Miel", "Pan", "Seda"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "Una oruga se convierte en una...", choices: ["Araña", "Mariposa", "Pájaro", "Pez"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "¿Cuántos días hay en una semana?", choices: ["5", "7", "10", "12"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "¿Qué respiramos para mantenernos vivos?", choices: ["Agua", "Aire", "Arena", "Jugo"], correctIndex: 1, minLevel: 0 },
+  { topic: "Ciencias", prompt: "¿Qué estación del año es la más fría?", choices: ["Verano", "Invierno", "Primavera", "Otoño"], correctIndex: 1, minLevel: 0 },
 
-  // ---- Geography ----
-  { topic: "Geography", prompt: "What is the capital of France?", choices: ["Paris", "Rome", "London", "Madrid"], correctIndex: 0, minLevel: 1 },
-  { topic: "Geography", prompt: "How many continents are there?", choices: ["5", "7", "10", "3"], correctIndex: 1, minLevel: 1 },
-  { topic: "Geography", prompt: "What do we call a very tall hill?", choices: ["Valley", "Mountain", "Field", "Cave"], correctIndex: 1, minLevel: 0 },
-  { topic: "Geography", prompt: "Which place is covered in ice and snow?", choices: ["Antarctica", "Africa", "India", "Mexico"], correctIndex: 0, minLevel: 2 },
+  // ---- Geografía ----
+  { topic: "Geografía", prompt: "¿Cuál es la capital de Francia?", choices: ["París", "Roma", "Londres", "Madrid"], correctIndex: 0, minLevel: 1 },
+  { topic: "Geografía", prompt: "¿Cuántos continentes hay?", choices: ["5", "7", "10", "3"], correctIndex: 1, minLevel: 1 },
+  { topic: "Geografía", prompt: "¿Cómo llamamos a una elevación de tierra muy alta?", choices: ["Valle", "Montaña", "Campo", "Cueva"], correctIndex: 1, minLevel: 0 },
+  { topic: "Geografía", prompt: "¿Qué lugar está cubierto de hielo y nieve?", choices: ["Antártida", "África", "India", "México"], correctIndex: 0, minLevel: 2 },
 ];
 
 // ---------- small helpers ----------
@@ -116,6 +122,15 @@ function sampleDistinct(arr, n, exclude, rng) {
   const pool = arr.filter((x) => x !== exclude);
   shuffle(pool, rng);
   return pool.slice(0, n);
+}
+function getFirstLetter(name) {
+  const first = name[0].toUpperCase();
+  if (first === "Á") return "A";
+  if (first === "É") return "E";
+  if (first === "Í") return "I";
+  if (first === "Ó") return "O";
+  if (first === "Ú") return "U";
+  return first;
 }
 
 // ---------- math ----------
@@ -154,7 +169,7 @@ function makeMath(level, rng) {
     }
   }
   const choices = buildNumberChoices(answer, rng);
-  return { topic: "Math", prompt: `${a} ${op} ${b} = ?`, choices: choices.map(String), correctIndex: choices.indexOf(answer) };
+  return { topic: "Matemáticas", prompt: `${a} ${op} ${b} = ?`, choices: choices.map(String), correctIndex: choices.indexOf(answer) };
 }
 
 // ---------- picture questions ----------
@@ -163,8 +178,8 @@ function makeCount(level, rng) {
   const n = 2 + Math.floor(rng() * (level <= 1 ? 5 : 8)); // 2..6 or 2..9
   const choices = buildNumberChoices(n, rng).map(String);
   return {
-    topic: "Counting",
-    prompt: "How many do you see?",
+    topic: "Contar",
+    prompt: "¿Cuántos ves?",
     picture: item.e,
     picCount: n,
     choices,
@@ -177,8 +192,8 @@ function makeNamePicture(rng) {
   const distractors = sampleDistinct(PICTURES, 3, item, rng).map((p) => p.name);
   const choices = shuffle([item.name, ...distractors], rng);
   return {
-    topic: "Pictures",
-    prompt: "What is this?",
+    topic: "Imágenes",
+    prompt: "¿Qué es esto?",
     picture: item.e,
     choices,
     correctIndex: choices.indexOf(item.name),
@@ -190,8 +205,8 @@ function makeTapPicture(rng) {
   const distractors = sampleDistinct(PICTURES, 3, item, rng).map((p) => p.e);
   const choices = shuffle([item.e, ...distractors], rng);
   return {
-    topic: "Pictures",
-    prompt: `Tap the ${item.name.toLowerCase()}!`,
+    topic: "Imágenes",
+    prompt: `¡Toca: ${item.name.toLowerCase()}!`,
     choices,
     choiceEmoji: true,
     correctIndex: choices.indexOf(item.e),
@@ -206,8 +221,8 @@ function makeCategory(rng) {
   const distractors = shuffle([...outCat], rng).slice(0, 3).map((p) => p.e);
   const choices = shuffle([correct.e, ...distractors], rng);
   return {
-    topic: "Pictures",
-    prompt: `Which one is a ${CATEGORY_LABEL[cat]}?`,
+    topic: "Imágenes",
+    prompt: `¿Cuál es un/a ${CATEGORY_LABEL[cat]}?`,
     choices,
     choiceEmoji: true,
     correctIndex: choices.indexOf(correct.e),
@@ -219,12 +234,12 @@ const PICTURE_MAKERS = [makeCount, makeNamePicture, makeTapPicture, makeCategory
 // ---------- Learn zone (Khan-style): letters, numbers, shapes, colors ----------
 const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const SHAPES = [
-  { e: "🔵", name: "Circle" }, { e: "🟦", name: "Square" }, { e: "🔺", name: "Triangle" },
-  { e: "⭐", name: "Star" }, { e: "❤️", name: "Heart" }, { e: "🔷", name: "Diamond" },
+  { e: "🔵", name: "Círculo" }, { e: "🟦", name: "Cuadrado" }, { e: "🔺", name: "Triángulo" },
+  { e: "⭐", name: "Estrella" }, { e: "❤️", name: "Corazón" }, { e: "🔷", name: "Rombo" },
 ];
 const COLORS = [
-  { e: "🔴", name: "Red" }, { e: "🟠", name: "Orange" }, { e: "🟡", name: "Yellow" },
-  { e: "🟢", name: "Green" }, { e: "🔵", name: "Blue" }, { e: "🟣", name: "Purple" },
+  { e: "🔴", name: "Rojo" }, { e: "🟠", name: "Naranja" }, { e: "🟡", name: "Amarillo" },
+  { e: "🟢", name: "Verde" }, { e: "🔵", name: "Azul" }, { e: "🟣", name: "Morado" },
 ];
 
 function fourLetters(correct, rng) {
@@ -237,14 +252,14 @@ function makeLetterQ(rng) {
   if (rng() < 0.5) {
     // "🍎 Apple starts with which letter?"
     const item = pick(PICTURES, rng);
-    const letter = item.name[0].toUpperCase();
+    const letter = getFirstLetter(item.name);
     const choices = fourLetters(letter, rng);
-    return { topic: "Letters", prompt: `${item.name} starts with...?`, picture: item.e, choices, choiceEmoji: true, correctIndex: choices.indexOf(letter) };
+    return { topic: "Letras", prompt: `¿${item.name} comienza con...?`, picture: item.e, choices, choiceEmoji: true, correctIndex: choices.indexOf(letter) };
   }
   // "Tap the letter B"
   const letter = ALPHA[Math.floor(rng() * 26)];
   const choices = fourLetters(letter, rng);
-  return { topic: "Letters", prompt: `Tap the letter ${letter}`, choices, choiceEmoji: true, correctIndex: choices.indexOf(letter) };
+  return { topic: "Letras", prompt: `Toca la letra ${letter}`, choices, choiceEmoji: true, correctIndex: choices.indexOf(letter) };
 }
 
 function makeNumberQ(level, rng) {
@@ -254,12 +269,12 @@ function makeNumberQ(level, rng) {
     // "What comes after 6?"
     const n = 1 + Math.floor(rng() * 18);
     const choices = buildNumberChoices(n + 1, rng).map(String);
-    return { topic: "Numbers", prompt: `What comes after ${n}?`, choices, correctIndex: choices.indexOf(String(n + 1)) };
+    return { topic: "Números", prompt: `¿Qué número viene después de ${n}?`, choices, correctIndex: choices.indexOf(String(n + 1)) };
   }
   // "Tap the number 7"
   const n = Math.floor(rng() * 20);
   const choices = buildNumberChoices(n, rng).map(String);
-  return { topic: "Numbers", prompt: `Tap the number ${n}`, choices, choiceEmoji: true, correctIndex: choices.indexOf(String(n)) };
+  return { topic: "Números", prompt: `Toca el número ${n}`, choices, choiceEmoji: true, correctIndex: choices.indexOf(String(n)) };
 }
 
 function fromTable(table, rng) {
@@ -268,19 +283,19 @@ function fromTable(table, rng) {
     const item = pick(table, rng);
     const distract = sampleDistinct(table, 3, item, rng).map((s) => s.e);
     const choices = shuffle([item.e, ...distract], rng);
-    return { prompt: `Tap the ${item.name.toLowerCase()}!`, choices, choiceEmoji: true, correctIndex: choices.indexOf(item.e), picture: null };
+    return { prompt: `¡Toca el/la ${item.name.toLowerCase()}!`, choices, choiceEmoji: true, correctIndex: choices.indexOf(item.e), picture: null };
   }
   // "What is this? 🔺" -> word choices
   const item = pick(table, rng);
   const distract = sampleDistinct(table, 3, item, rng).map((s) => s.name);
   const choices = shuffle([item.name, ...distract], rng);
-  return { prompt: "What is this?", picture: item.e, choices, correctIndex: choices.indexOf(item.name) };
+  return { prompt: "¿Qué es esto?", picture: item.e, choices, correctIndex: choices.indexOf(item.name) };
 }
 function makeShapeQ(rng) {
-  return { topic: "Shapes", ...fromTable(SHAPES, rng) };
+  return { topic: "Figuras", ...fromTable(SHAPES, rng) };
 }
 function makeColorQ(rng) {
-  return { topic: "Colors", ...fromTable(COLORS, rng) };
+  return { topic: "Colores", ...fromTable(COLORS, rng) };
 }
 
 // A question for a Learn subject ("letters" | "numbers" | "shapes" | "colors").
@@ -294,16 +309,16 @@ export function getLearnQuestion(subject, level = 0, rng = Math.random) {
 
 // ---------- categories (used to pick the subject in multiplayer rooms) ----------
 export const CATEGORIES = [
-  { key: "mix", emoji: "🎲", name: "Everything" },
-  { key: "math", emoji: "➕", name: "Math" },
-  { key: "pictures", emoji: "🖼️", name: "Pictures" },
-  { key: "letters", emoji: "🔤", name: "Letters" },
-  { key: "numbers", emoji: "🔢", name: "Numbers" },
-  { key: "shapes", emoji: "🔷", name: "Shapes" },
-  { key: "colors", emoji: "🎨", name: "Colors" },
-  { key: "reading", emoji: "📖", name: "Reading" },
-  { key: "science", emoji: "🔬", name: "Science" },
-  { key: "geography", emoji: "🌍", name: "World" },
+  { key: "mix", emoji: "🎲", name: "Todo" },
+  { key: "math", emoji: "➕", name: "Matemáticas" },
+  { key: "pictures", emoji: "🖼️", name: "Imágenes" },
+  { key: "letters", emoji: "🔤", name: "Letras" },
+  { key: "numbers", emoji: "🔢", name: "Números" },
+  { key: "shapes", emoji: "🔷", name: "Figuras" },
+  { key: "colors", emoji: "🎨", name: "Colores" },
+  { key: "reading", emoji: "📖", name: "Lectura" },
+  { key: "science", emoji: "🔬", name: "Ciencia" },
+  { key: "geography", emoji: "🌍", name: "Geografía" },
 ];
 
 function bankByTopic(topic, level, rng) {
@@ -323,9 +338,9 @@ export function getCategoryQuestion(category, level = 0, rng = Math.random) {
     case "numbers": return makeNumberQ(level, rng);
     case "shapes": return makeShapeQ(rng);
     case "colors": return makeColorQ(rng);
-    case "reading": return bankByTopic("Reading", level, rng);
-    case "science": return bankByTopic("Science", level, rng);
-    case "geography": return bankByTopic("Geography", level, rng);
+    case "reading": return bankByTopic("Lectura", level, rng);
+    case "science": return bankByTopic("Ciencias", level, rng);
+    case "geography": return bankByTopic("Geografía", level, rng);
     default: return getQuestion(level, rng);
   }
 }

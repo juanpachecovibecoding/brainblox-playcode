@@ -58,14 +58,14 @@ export function createQuiz() {
         const correct = i === question.correctIndex;
         if (correct) {
           btn.classList.add("correct");
-          feedbackEl.textContent = "Yes! Great job! 🎉";
+          feedbackEl.textContent = "¡Sí! ¡Muy bien! 🎉";
           feedbackEl.className = "quiz-feedback good";
           mascotEl.textContent = "🎉";
           setTimeout(() => finish(true), 800);
         } else {
           btn.classList.add("wrong");
           buttons[question.correctIndex].classList.add("correct");
-          feedbackEl.textContent = "Oops! Try again.";
+          feedbackEl.textContent = "¡Ups! Inténtalo de nuevo.";
           feedbackEl.className = "quiz-feedback bad";
           mascotEl.textContent = "🙈";
           setTimeout(() => finish(false), 1300);

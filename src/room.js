@@ -11,9 +11,9 @@ import { CATEGORIES } from "./questions.js";
 import { colorForId } from "./avatar.js";
 
 const MODES = [
-  { key: "obby", emoji: "🏃", name: "Obstacle Course", desc: "Run the course together" },
-  { key: "explore", emoji: "🌍", name: "Explore Together", desc: "Hang out + voice chat" },
-  { key: "classroom", emoji: "👩‍🏫", name: "Classroom", desc: "Teacher asks, kids answer" },
+  { key: "obby", emoji: "🏃", name: "Carrera de Obstáculos", desc: "Corran el curso juntos" },
+  { key: "explore", emoji: "🌍", name: "Explorar juntos", desc: "Pasear y chatear por voz" },
+  { key: "classroom", emoji: "👩‍🏫", name: "Aula", desc: "La maestra pregunta, los niños responden" },
 ];
 
 export function startRoom(choice, cb) {
@@ -22,7 +22,7 @@ export function startRoom(choice, cb) {
   // the generated resort "waiting area" backdrop (buildings + pool)
   const bg = `${import.meta.env.BASE_URL}assets/scenes/waiting.jpg`;
   root.style.background = `url(${bg}) center/cover no-repeat, radial-gradient(circle at 50% 18%, #b89cff, #8e6ef0 60%, #7a5bdc)`;
-  root.innerHTML = `<div class="room-wrap"><div class="lobby-card"><div class="win-emoji">🔗</div><h2>Connecting…</h2></div></div>`;
+  root.innerHTML = `<div class="room-wrap"><div class="lobby-card"><div class="win-emoji">🔗</div><h2>Conectando…</h2></div></div>`;
 
   let session = null;
   let classroom = null;
@@ -34,7 +34,7 @@ export function startRoom(choice, cb) {
 
   createSession(profile, choice.code).then((s) => {
     if (destroyed) { s?.leave(); return; }
-    if (!s) { root.innerHTML = `<div class="room-wrap"><div class="lobby-card"><div class="win-emoji">😕</div><h2>Could not join</h2><p>Check the code and try again.</p></div></div>`; return; }
+    if (!s) { root.innerHTML = `<div class="room-wrap"><div class="lobby-card"><div class="win-emoji">😕</div><h2>No se pudo ingresar</h2><p>Revisa el código e intenta de nuevo.</p></div></div>`; return; }
     session = s;
     session.onMsg(onMsg);
     session.onRoster(() => { if (!classroom) renderLobby(); });
@@ -50,11 +50,11 @@ export function startRoom(choice, cb) {
     const speaking = session.speaking();
     root.innerHTML = `
       <div class="room-wrap">
-        <div class="room-title-tag">🏝️ Waiting Area</div>
+        <div class="room-title-tag">🏝️ Área de Espera</div>
         <div class="lobby-card room-card">
-          <h1 class="logo room-logo">Room</h1>
+          <h1 class="logo room-logo">Sala</h1>
           <div class="room-code"><span>${choice.code}</span></div>
-          <button class="btn room-copy" id="room-copy">🔗 Copy invite link</button>
+          <button class="btn room-copy" id="room-copy">🔗 Copiar enlace</button>
 
           <div class="room-players">
             ${members.map((p) => playerChip(p, host, speaking)).join("")}
@@ -62,7 +62,7 @@ export function startRoom(choice, cb) {
 
           <div class="room-voice">
             <button class="icon-btn ${session.isMuted() ? "muted" : "live"}" id="room-mute">${session.isMuted() ? "🔇" : "🎤"}</button>
-            <span>${session.isMuted() ? "Mic off - tap to talk" : "Mic on!"}</span>
+            <span>${session.isMuted() ? "Mic apagado - toca para hablar" : "¡Mic encendido!"}</span>
           </div>
 
           ${iAmHost ? hostControls() : waitView(host, members)}
@@ -89,30 +89,30 @@ export function startRoom(choice, cb) {
     const color = "#" + (p.color || 0x5fc6f0).toString(16).padStart(6, "0");
     return `<div class="room-chip ${isSpeaking ? "speaking" : ""}">
       <span class="dot" style="background:${color}"></span>
-      ${p.name || "Player"}${p.id === session.myId ? " (you)" : ""} ${isHost ? "👑" : ""}
+      ${p.name || "Jugador"}${p.id === session.myId ? " (tú)" : ""} ${isHost ? "👑" : ""}
     </div>`;
   }
 
   function hostControls() {
     return `
-      <div class="room-section">You're the host - pick a game:</div>
+      <div class="room-section">Eres el anfitrión - elige un juego:</div>
       <div class="room-modes">
         ${MODES.map((m) => `<button class="room-mode ${selected.mode === m.key ? "selected" : ""}" data-mode="${m.key}"><span class="rm-emoji">${m.emoji}</span><b>${m.name}</b><small>${m.desc}</small></button>`).join("")}
       </div>
-      <div class="room-section">Category:</div>
+      <div class="room-section">Categoría:</div>
       <div class="room-cats">
         ${CATEGORIES.map((c) => `<button class="room-cat ${selected.category === c.key ? "selected" : ""}" data-cat="${c.key}">${c.emoji} ${c.name}</button>`).join("")}
       </div>
-      <button class="btn btn-big btn-accent" id="room-start">▶ Start Game</button>`;
+      <button class="btn btn-big btn-accent" id="room-start">▶ Iniciar Juego</button>`;
   }
 
   function waitView(host, members) {
-    const hostName = members.find((m) => m.id === host)?.name || "the host";
+    const hostName = members.find((m) => m.id === host)?.name || "el anfitrión";
     const mode = MODES.find((m) => m.key === selected.mode);
     const cat = CATEGORIES.find((c) => c.key === selected.category);
     return `<div class="room-wait">
       <div class="room-spin">⏳</div>
-      <p>Waiting for <b>${hostName}</b> to start…</p>
+      <p>Esperando a <b>${hostName}</b> para empezar…</p>
       <p class="room-sel">${mode ? mode.emoji + " " + mode.name : ""} · ${cat ? cat.emoji + " " + cat.name : ""}</p>
     </div>`;
   }
@@ -166,7 +166,7 @@ export function startRoom(choice, cb) {
   }
   function flash(text) {
     const btn = root.querySelector("#room-copy");
-    if (btn) { btn.textContent = text; setTimeout(() => { if (root.querySelector("#room-copy")) root.querySelector("#room-copy").textContent = "🔗 Copy invite link"; }, 1500); }
+    if (btn) { btn.textContent = text; setTimeout(() => { if (root.querySelector("#room-copy")) root.querySelector("#room-copy").textContent = "🔗 Copiar enlace"; }, 1500); }
   }
 
   function destroy() {

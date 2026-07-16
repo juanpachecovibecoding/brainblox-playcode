@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="BrainBlox" />
-    <title>BrainBlox - Jump and Learn!</title>
+    <title>BrainBlox - ¡Salta y Aprende!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -30,19 +30,19 @@
       <div class="lobby-card">
         <div class="lobby-emoji">🧩</div>
         <h1 class="logo">BrainBlox</h1>
-        <p class="tagline">Jump, play, and learn with friends!</p>
+        <p class="tagline">¡Salta, juega y aprende con amigos!</p>
 
-        <label class="field-label" for="name-input">Your name</label>
-        <input id="name-input" class="text-input" type="text" maxlength="12" placeholder="Type your name" autocomplete="off" />
+        <label class="field-label" for="name-input">Tu nombre</label>
+        <input id="name-input" class="text-input" type="text" maxlength="12" placeholder="Escribe tu nombre" autocomplete="off" />
 
         <div class="lobby-buttons">
-          <button id="btn-solo" class="btn btn-big">🎮 Play Alone</button>
-          <button id="btn-create" class="btn btn-big btn-accent">👫 Create a Room</button>
+          <button id="btn-solo" class="btn btn-big">🎮 Jugar Solo</button>
+          <button id="btn-create" class="btn btn-big btn-accent">👫 Crear Sala</button>
         </div>
 
         <div class="join-row" id="join-row">
-          <input id="code-input" class="text-input code" type="text" maxlength="7" placeholder="ROOM CODE" autocomplete="off" />
-          <button id="btn-join" class="btn">Join</button>
+          <input id="code-input" class="text-input code" type="text" maxlength="7" placeholder="CÓDIGO DE SALA" autocomplete="off" />
+          <button id="btn-join" class="btn">Unirse</button>
         </div>
 
         <p id="lobby-msg" class="lobby-msg"></p>
@@ -52,25 +52,25 @@
     <!-- ============ HUB / WORLD SELECT ============ -->
     <div id="hub" class="screen hidden">
       <div class="hub-inner">
-        <h1 class="hub-title">Pick a Game! 🎲</h1>
+        <h1 class="hub-title">¡Elige un Juego! 🎲</h1>
         <div class="hub-grid">
           <button class="hub-card" data-act="obby">
-            <span class="hc-emoji">🏃</span><span class="hc-name">Obstacle Course</span><span class="hc-desc">Jump & answer</span>
+            <span class="hc-emoji">🏃</span><span class="hc-name">Carrera de Obstáculos</span><span class="hc-desc">Salta & responde</span>
           </button>
           <button class="hub-card" data-act="arcade">
-            <span class="hc-emoji">⚡</span><span class="hc-name">Quiz Arcade</span><span class="hc-desc">Fast questions</span>
+            <span class="hc-emoji">⚡</span><span class="hc-name">Quiz Arcade</span><span class="hc-desc">Preguntas rápidas</span>
           </button>
           <button class="hub-card" data-act="puzzles">
-            <span class="hc-emoji">🧩</span><span class="hc-name">Jigsaw Puzzles</span><span class="hc-desc">Build the picture</span>
+            <span class="hc-emoji">🧩</span><span class="hc-name">Rompecabezas</span><span class="hc-desc">Arma la imagen</span>
           </button>
           <button class="hub-card" data-act="learn">
-            <span class="hc-emoji">📚</span><span class="hc-name">Learn</span><span class="hc-desc">ABC · 123 · shapes</span>
+            <span class="hc-emoji">📚</span><span class="hc-name">Aprender</span><span class="hc-desc">ABC · 123 · figuras</span>
           </button>
         </div>
         <div class="hub-foot">
           <span class="pill level"><span class="lvl-badge">Lv <span id="hub-level">1</span></span></span>
           <span class="pill stars">⭐ <span id="hub-stars">0</span></span>
-          <button id="hub-fs" class="icon-btn" title="Fullscreen">⛶</button>
+          <button id="hub-fs" class="icon-btn" title="Pantalla completa">⛶</button>
         </div>
       </div>
     </div>
@@ -113,12 +113,12 @@
         </div>
         <div class="hud-right">
           <div id="room-badge" class="room-badge hidden">
-            Room <span id="room-code-label"></span>
-            <button id="btn-copy" class="mini-btn" title="Copy invite link">Copy link</button>
+            Sala <span id="room-code-label"></span>
+            <button id="btn-copy" class="mini-btn" title="Copiar enlace de invitación">Copiar</button>
           </div>
-          <button id="btn-home" class="icon-btn hidden" title="Home">🏠</button>
-          <button id="btn-mute" class="icon-btn hidden" title="Mic">🎤</button>
-          <button id="btn-fs" class="icon-btn" title="Fullscreen">⛶</button>
+          <button id="btn-home" class="icon-btn hidden" title="Inicio">🏠</button>
+          <button id="btn-mute" class="icon-btn hidden" title="Micrófono">🎤</button>
+          <button id="btn-fs" class="icon-btn" title="Pantalla completa">⛶</button>
         </div>
       </div>
 
@@ -143,26 +143,26 @@
       <div id="emote-wheel" class="emote-wheel"></div>
       <div class="ac-row">
         <button id="emote-btn" class="emote-btn hidden" aria-label="Emotes">😄</button>
-        <button id="jump-btn" class="jump-btn">JUMP</button>
+        <button id="jump-btn" class="jump-btn">SALTAR</button>
       </div>
     </div>
 
     <!-- global music toggle (top-right, shown once play starts) -->
-    <button id="music-btn" class="icon-btn music-btn hidden" title="Music">🎵</button>
+    <button id="music-btn" class="icon-btn music-btn hidden" title="Música">🎵</button>
 
     <!-- ============ QUIZ ARCADE (alternate mode) ============ -->
     <div id="arcade" class="hidden">
       <div class="arcade-head">
         <div class="arcade-title">⚡ Quiz Arcade</div>
-        <div class="arcade-count">Question <span id="arcade-q">1</span> of <span id="arcade-total">10</span></div>
+        <div class="arcade-count">Pregunta <span id="arcade-q">1</span> de <span id="arcade-total">10</span></div>
       </div>
       <div id="arcade-result" class="result-card hidden">
         <div class="win-emoji" id="arcade-result-emoji">🎉</div>
-        <h2 id="arcade-result-title">Great job!</h2>
+        <h2 id="arcade-result-title">¡Muy bien!</h2>
         <p class="win-stars" id="arcade-result-sub"></p>
         <div class="lobby-buttons">
-          <button id="btn-arcade-again" class="btn btn-big btn-accent">Play Again</button>
-          <button id="btn-arcade-menu" class="btn btn-big">Back to Menu</button>
+          <button id="btn-arcade-again" class="btn btn-big btn-accent">Jugar de nuevo</button>
+          <button id="btn-arcade-menu" class="btn btn-big">Volver al menú</button>
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@
       <div class="quiz-card">
         <div class="quiz-mascot" id="quiz-mascot">🦊</div>
         <div class="quiz-progress"><span id="quiz-progress-fill" class="quiz-progress-fill"></span></div>
-        <div class="quiz-topic" id="quiz-topic">Math</div>
+        <div class="quiz-topic" id="quiz-topic">Matemáticas</div>
         <div class="quiz-picture" id="quiz-picture"></div>
         <div class="quiz-prompt" id="quiz-prompt"></div>
         <div class="quiz-choices" id="quiz-choices"></div>
@@ -184,12 +184,12 @@
     <div id="win" class="screen hidden">
       <div class="win-card">
         <div class="win-emoji">🏆</div>
-        <h2>You did it!</h2>
-        <p class="win-stars">You earned <span id="win-star-count">0</span> ⭐ and <span id="win-coin-count">0</span> 🪙</p>
-        <p class="win-level">You reached <b>Level <span id="win-level-num">1</span></b>!</p>
+        <h2>¡Lo lograste!</h2>
+        <p class="win-stars">Ganaste <span id="win-star-count">0</span> ⭐ y <span id="win-coin-count">0</span> 🪙</p>
+        <p class="win-level">¡Alcanzaste el <b>Nivel <span id="win-level-num">1</span></b>!</p>
         <div class="lobby-buttons">
-          <button id="btn-play-again" class="btn btn-big btn-accent">Play Again</button>
-          <button id="btn-win-home" class="btn btn-big">🏠 Hub</button>
+          <button id="btn-play-again" class="btn btn-big btn-accent">Jugar de nuevo</button>
+          <button id="btn-win-home" class="btn btn-big">🏠 Inicio</button>
         </div>
       </div>
     </div>
@@ -198,9 +198,9 @@
     <div id="fs-tip" class="screen hidden">
       <div class="tip-card">
         <div class="win-emoji">📱</div>
-        <h2>Go Full Screen</h2>
-        <p>Tap the <b>Share</b> button below, then choose <b>Add to Home Screen</b>. Open BrainBlox from your home screen to play full screen!</p>
-        <button id="btn-tip-close" class="btn btn-big btn-accent">Got it!</button>
+        <h2>Pantalla Completa</h2>
+        <p>Toca el botón <b>Compartir</b> abajo y elige <b>Agregar a inicio</b>. Abre BrainBlox desde tu pantalla de inicio para jugar en pantalla completa.</p>
+        <button id="btn-tip-close" class="btn btn-big btn-accent">¡Entendido!</button>
       </div>
     </div>
 

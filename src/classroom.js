@@ -47,16 +47,16 @@ export function startClassroom(session, opts, onExit) {
     root.innerHTML = `
       <div class="cls-wrap">
         <div class="cls-head">
-          <div class="cls-role">👩‍🏫 Teacher · ${catLabel}</div>
+          <div class="cls-role">👩‍🏫 Maestra · ${catLabel}</div>
           <div class="cls-head-right">${muteBtn()}<button class="icon-btn" id="cls-end" title="End class">✖</button></div>
         </div>
-        ${current ? questionCard(current, revealed, -1) : `<div class="cls-start"><p>Ready to teach <b>${catLabel}</b>?</p></div>`}
+        ${current ? questionCard(current, revealed, -1) : `<div class="cls-start"><p>¿Listo para enseñar <b>${catLabel}</b>?</p></div>`}
         <div class="cls-roster">
-          ${students.length ? students.map((s) => rosterRow(s)).join("") : `<div class="cls-empty">Waiting for students to join…</div>`}
+          ${students.length ? students.map((s) => rosterRow(s)).join("") : `<div class="cls-empty">Esperando que los alumnos se unan…</div>`}
         </div>
         <div class="cls-controls">
-          ${current && !revealed ? `<button class="btn" id="cls-reveal">👀 Reveal Answer</button>` : ""}
-          <button class="btn btn-accent btn-big" id="cls-next">${current ? "Next Question →" : "Start ▶"}</button>
+          ${current && !revealed ? `<button class="btn" id="cls-reveal">👀 Revelar Respuesta</button>` : ""}
+          <button class="btn btn-accent btn-big" id="cls-next">${current ? "Siguiente Pregunta →" : "Empezar ▶"}</button>
         </div>
       </div>`;
     wireCommon();
@@ -68,7 +68,7 @@ export function startClassroom(session, opts, onExit) {
   function rosterRow(s) {
     const a = answers.get(s.id);
     const sc = scores.get(s.id) || 0;
-    const status = a ? (revealed ? (a.correct ? "✅" : "❌") : "✋ answered") : "💭 thinking";
+    const status = a ? (revealed ? (a.correct ? "✅" : "❌") : "✋ respondido") : "💭 pensando";
     const dot = `<span class="dot" style="background:#${(s.color || 0x5fc6f0).toString(16).padStart(6, "0")}"></span>`;
     return `<div class="cls-srow">${dot}<span class="cls-sname">${s.name || "Player"}</span><span class="cls-sstatus">${status}</span><span class="cls-sscore">⭐ ${sc}</span></div>`;
   }
@@ -78,10 +78,10 @@ export function startClassroom(session, opts, onExit) {
     root.innerHTML = `
       <div class="cls-wrap">
         <div class="cls-head">
-          <div class="cls-role">🙋 Listen to the teacher!</div>
+          <div class="cls-role">🙋 ¡Escucha a la maestra!</div>
           <div class="cls-head-right">${muteBtn()}<button class="icon-btn" id="cls-end" title="Leave">✖</button></div>
         </div>
-        <div class="cls-start"><div class="win-emoji">👂</div><p>Get ready! The teacher will start soon.</p></div>
+        <div class="cls-start"><div class="win-emoji">👂</div><p>¡Prepárate! La maestra empezará pronto.</p></div>
       </div>`;
     wireCommon();
   }
@@ -90,11 +90,11 @@ export function startClassroom(session, opts, onExit) {
     root.innerHTML = `
       <div class="cls-wrap">
         <div class="cls-head">
-          <div class="cls-role">🙋 Your turn to answer!</div>
+          <div class="cls-role">🙋 ¡Tu turno de responder!</div>
           <div class="cls-head-right">${muteBtn()}<button class="icon-btn" id="cls-end" title="Leave">✖</button></div>
         </div>
         ${questionCard(current, revealed, answered ? answers.get(session.myId)?.choice ?? -1 : -1)}
-        <div class="cls-note" id="cls-note">${answered ? "Answer sent! ⏳ Waiting for the teacher…" : "Tap your answer!"}</div>
+        <div class="cls-note" id="cls-note">${answered ? "¡Respuesta enviada! ⏳ Esperando a la maestra…" : "¡Toca tu respuesta!"}</div>
       </div>`;
     wireCommon();
     if (!answered) {

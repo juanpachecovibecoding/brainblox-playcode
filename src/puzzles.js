@@ -8,7 +8,7 @@ import { sfx, unlockAudio } from "./audio.js";
 
 // The real illustrations live in public/assets/puzzles and are served at the
 // app base (works for both "/" on Vercel and "/brainblox/" on GitHub Pages).
-const LABELS = { lion: "Lion", rocket: "Rocket", boat: "Sailboat", car: "Race Car", house: "Cozy House", fish: "Happy Fish" };
+const LABELS = { lion: "León", rocket: "Cohete", boat: "Velero", car: "Auto de carreras", house: "Casa acogedora", fish: "Pez feliz" };
 const BASE = import.meta.env.BASE_URL;
 const PICS = ["lion", "rocket", "boat", "car", "house", "fish"].map((name) => ({
   name,
@@ -34,14 +34,14 @@ export function startPuzzles(onHome) {
   function showPicker() {
     root.innerHTML = `
       <div class="puz-wrap">
-        <h1 class="puz-title">🧩 Pick a Puzzle</h1>
+        <h1 class="puz-title">🧩 Elige un rompecabezas</h1>
         <div class="puz-pick">
           ${PICS.map((p) => `<button class="puz-thumb" data-name="${p.name}"><img src="${p.url}" alt="${LABELS[p.name] || p.name}"/><span>${LABELS[p.name] || p.name}</span></button>`).join("")}
         </div>
         <div class="puz-diff">
-          <span>Pieces:</span>
-          <button class="puz-dbtn selected" data-n="3">Easy</button>
-          <button class="puz-dbtn" data-n="4">Medium</button>
+          <span>Piezas:</span>
+          <button class="puz-dbtn selected" data-n="3">Fácil</button>
+          <button class="puz-dbtn" data-n="4">Medio</button>
         </div>
       </div>`;
     let n = 3;
@@ -70,7 +70,7 @@ export function startPuzzles(onHome) {
           <div class="puz-board" style="--n:${n}"></div>
           <div class="puz-tray"></div>
         </div>
-        <button class="btn puz-back">↩ Other puzzles</button>
+        <button class="btn puz-back">↩ Otros rompecabezas</button>
         <div class="puz-feedback" id="puz-feedback"></div>
       </div>`;
     const board = root.querySelector(".puz-board");
@@ -138,7 +138,7 @@ export function startPuzzles(onHome) {
 
     function win() {
       const fb = root.querySelector("#puz-feedback");
-      fb.textContent = "You did it! 🎉";
+      fb.textContent = "¡Lo lograste! 🎉";
       fb.className = "puz-feedback good";
       sfx.win();
       progress.addXp(40);
@@ -147,7 +147,7 @@ export function startPuzzles(onHome) {
       setTimeout(() => {
         const again = document.createElement("button");
         again.className = "btn btn-accent puz-again";
-        again.textContent = "Next Puzzle →";
+        again.textContent = "Siguiente rompecabezas →";
         on(again, "click", showPicker);
         fb.after(again);
       }, 700);
