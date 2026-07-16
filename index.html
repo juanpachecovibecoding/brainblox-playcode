@@ -100,8 +100,10 @@
 
     <!-- ============ GLOBAL BUTTONS (Always accessible) ============ -->
     <div class="hud-top" style="z-index: 65; pointer-events: none;">
-      <div class="hud-right" style="width: 100%; justify-content: flex-end;">
+      <div class="hud-left" style="pointer-events: auto;">
         <button id="btn-home" class="icon-btn hidden" title="Inicio">🏠</button>
+      </div>
+      <div class="hud-right" style="justify-content: flex-end; pointer-events: auto;">
         <button id="btn-mute" class="icon-btn hidden" title="Micrófono">🎤</button>
       </div>
     </div>
@@ -110,7 +112,7 @@
     <div id="hud" class="hidden">
       <!-- top bar -->
       <div class="hud-top">
-        <div class="hud-left">
+        <div class="hud-left" style="margin-left: 54px;">
           <div class="pill stars">⭐ <span id="star-count">0</span></div>
           <div class="pill coins">🪙 <span id="coin-count">0</span></div>
           <div class="pill level">
