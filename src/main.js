@@ -197,6 +197,7 @@ function startGame(choice, onHome) {
   const quiz = createQuiz();
   const hud = createHud();
   document.getElementById("hud").classList.remove("hidden");
+  document.getElementById("btn-home").classList.remove("hidden");
 
   // ---------- multiplayer ----------
   const remote = createRemotePlayers();

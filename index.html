@@ -99,6 +99,15 @@
     <div id="mode-hud" class="mode-hud hidden"></div>
     <div id="mode-result" class="screen hidden"></div>
 
+    <!-- ============ GLOBAL BUTTONS (Always accessible) ============ -->
+    <div class="hud-top" style="z-index: 65; pointer-events: none;">
+      <div class="hud-right" style="width: 100%; justify-content: flex-end;">
+        <button id="btn-home" class="icon-btn hidden" title="Inicio">🏠</button>
+        <button id="btn-mute" class="icon-btn hidden" title="Micrófono">🎤</button>
+        <button id="btn-fs" class="icon-btn" title="Pantalla completa">⛶</button>
+      </div>
+    </div>
+
     <!-- ============ IN-GAME HUD ============ -->
     <div id="hud" class="hidden">
       <!-- top bar -->
@@ -116,9 +125,6 @@
             Sala <span id="room-code-label"></span>
             <button id="btn-copy" class="mini-btn" title="Copiar enlace de invitación">Copiar</button>
           </div>
-          <button id="btn-home" class="icon-btn hidden" title="Inicio">🏠</button>
-          <button id="btn-mute" class="icon-btn hidden" title="Micrófono">🎤</button>
-          <button id="btn-fs" class="icon-btn" title="Pantalla completa">⛶</button>
         </div>
       </div>
 
