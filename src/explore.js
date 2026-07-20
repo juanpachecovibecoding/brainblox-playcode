@@ -117,6 +117,7 @@ export function startExplore(onEnter, opts = {}) {
   const textPlane2 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), planeMat); textPlane2.position.y = -0.65; textPlane2.rotation.y = Math.PI;
   logoGroup.add(textPlane1, textPlane2);
   logoGroup.traverse((o) => { o.castShadow = true; });
+  logoGroup.scale.setScalar(2);
 
   fountain.add(basin, water, spout, logoGroup);
   fountain.traverse((o) => (o.castShadow = true));
